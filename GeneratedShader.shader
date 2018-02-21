@@ -5,7 +5,7 @@ Shader "Unlit Master"
 				[NoScaleOffset] Texture_291687E0("RuleTexture", 2D) = "white" {}
 				[NoScaleOffset] Texture_14DCDDF9("RuleTexture2", 2D) = "white" {}
 				Vector1_C66C8C5F("Lerp", Range(0, 1)) = 0.5
-				Color_BE0AC573("Color", Color) = (1,1,1,0)
+				Color_BE0AC573("Color", Color) = (1,1,1,0.3372549)
 		
 	}
 	SubShader
@@ -59,31 +59,13 @@ Shader "Unlit Master"
 							float Vector1_C66C8C5F;
 							float4 Color_BE0AC573;
 							float4 _SampleTexture2D_3AD50D6A_UV;
-							float _Add_64C6842A_B;
-							float _Multiply_DA61AB8D_B;
-							float _Clamp_64109F45_Min;
-							float _Clamp_64109F45_Max;
 							float4 _SampleTexture2D_12DDFADF_UV;
+							float _UnlitMaster_2B87A01D_Alpha;
 					
 							struct SurfaceInputs{
 								half4 uv0;
 							};
 					
-					
-					        void Unity_Add_float(float A, float B, out float Out)
-					        {
-					            Out = A + B;
-					        }
-					
-					        void Unity_Multiply_float(float A, float B, out float Out)
-					        {
-					            Out = A * B;
-					        }
-					
-					        void Unity_Clamp_float(float In, float Min, float Max, out float Out)
-					        {
-					            Out = clamp(In, Min, Max);
-					        }
 					
 					        void Unity_Step_float4(float4 A, float4 B, out float4 Out)
 					        {
@@ -122,26 +104,21 @@ Shader "Unlit Master"
 								float _SampleTexture2D_3AD50D6A_G = _SampleTexture2D_3AD50D6A_RGBA.g;
 								float _SampleTexture2D_3AD50D6A_B = _SampleTexture2D_3AD50D6A_RGBA.b;
 								float _SampleTexture2D_3AD50D6A_A = _SampleTexture2D_3AD50D6A_RGBA.a;
-								float _Add_64C6842A_Out;
-								Unity_Add_float(_SinTime.w, _Add_64C6842A_B, _Add_64C6842A_Out);
-								float _Multiply_DA61AB8D_Out;
-								Unity_Multiply_float(_Add_64C6842A_Out, _Multiply_DA61AB8D_B, _Multiply_DA61AB8D_Out);
-								float _Clamp_64109F45_Out;
-								Unity_Clamp_float(_Multiply_DA61AB8D_Out, _Clamp_64109F45_Min, _Clamp_64109F45_Max, _Clamp_64109F45_Out);
+								float _Property_25B71B3A_Out = Vector1_C66C8C5F;
 								float4 _Step_5342BEEB_Out;
-								Unity_Step_float4(_SampleTexture2D_3AD50D6A_RGBA, (_Clamp_64109F45_Out.xxxx), _Step_5342BEEB_Out);
+								Unity_Step_float4(_SampleTexture2D_3AD50D6A_RGBA, (_Property_25B71B3A_Out.xxxx), _Step_5342BEEB_Out);
 								float4 _SampleTexture2D_12DDFADF_RGBA = SAMPLE_TEXTURE2D(Texture_14DCDDF9, samplerTexture_14DCDDF9, IN.uv0.xy);
 								float _SampleTexture2D_12DDFADF_R = _SampleTexture2D_12DDFADF_RGBA.r;
 								float _SampleTexture2D_12DDFADF_G = _SampleTexture2D_12DDFADF_RGBA.g;
 								float _SampleTexture2D_12DDFADF_B = _SampleTexture2D_12DDFADF_RGBA.b;
 								float _SampleTexture2D_12DDFADF_A = _SampleTexture2D_12DDFADF_RGBA.a;
 								float4 _Step_EFA13478_Out;
-								Unity_Step_float4(_SampleTexture2D_12DDFADF_RGBA, (_Clamp_64109F45_Out.xxxx), _Step_EFA13478_Out);
+								Unity_Step_float4(_SampleTexture2D_12DDFADF_RGBA, (_Property_25B71B3A_Out.xxxx), _Step_EFA13478_Out);
 								float4 _Add_60C91261_Out;
 								Unity_Add_float4(_Step_5342BEEB_Out, _Step_EFA13478_Out, _Add_60C91261_Out);
 								surface.Color = (_Property_C4D3517C_Out.xyz);
-								surface.Alpha = (_Add_60C91261_Out).x;
-								surface.AlphaClipThreshold = _Clamp_64109F45_Out;
+								surface.Alpha = _UnlitMaster_2B87A01D_Alpha;
+								surface.AlphaClipThreshold = (_Add_60C91261_Out).x;
 								return surface;
 							}
 					
