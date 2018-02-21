@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 41225fbf3bb194ff883e32f8aa07c658
+  productGUID: faa7e17dbcbc54d50ad33f616d2dfc46
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -231,7 +231,7 @@ PlayerSettings:
   iOSRequireARKit: 0
   appleEnableProMotion: 0
   clonedFromGUID: ea5686f0ee1527147a305f0e9593c8ac
-  templatePackageId: com.unity.template.lightweight@0.0.2
+  templatePackageId: com.unity.template.lightweight@0.0.3
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
@@ -251,7 +251,10 @@ PlayerSettings:
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons: []
   m_BuildTargetPlatformIcons: []
-  m_BuildTargetBatching: []
+  m_BuildTargetBatching:
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
+    m_DynamicBatching: 0
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings: []
   m_BuildTargetEnableVuforiaSettings: []
@@ -624,8 +627,8 @@ PlayerSettings:
   cloudServicesEnabled: {}
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: e711005c-3bd8-4ef2-9c23-a02f455ba1a0
-  projectName: ShaderGraph-Test (3)
+  cloudProjectId: 8a6a5db9-640b-4b9b-92bd-4885939ff3b9
+  projectName: ShaderGraph-Test (5)
   organizationId: lightgive-as-publisher
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

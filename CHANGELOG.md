@@ -12,4 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Updated to include Lightweight SRP and shadergraph. Updated with project settings and some simple content appropriate for the lightweight render pipeline.
 
+## [0.0.2] - 2018-1-26
+
+### Shadergraph and lightweight version updated. Lighting settings updated
+
 
