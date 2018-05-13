@@ -4,7 +4,7 @@ Shader "Unlit Master"
 	{
 				[NoScaleOffset] Texture_291687E0("RuleTexture", 2D) = "white" {}
 				[NoScaleOffset] Texture_14DCDDF9("RuleTexture2", 2D) = "white" {}
-				Vector1_C66C8C5F("Lerp", Range(0, 1)) = 0.5
+				Vector1_C66C8C5F("Lerp", Range(0, 1)) = 0.1
 				Color_BE0AC573("Color", Color) = (1,1,1,0.3372549)
 		
 	}
@@ -59,6 +59,7 @@ Shader "Unlit Master"
 							float Vector1_C66C8C5F;
 							float4 Color_BE0AC573;
 							float4 _SampleTexture2D_3AD50D6A_UV;
+							float Vector1_DEFF42F5;
 							float4 _SampleTexture2D_12DDFADF_UV;
 							float _UnlitMaster_2B87A01D_Alpha;
 					
@@ -104,16 +105,15 @@ Shader "Unlit Master"
 								float _SampleTexture2D_3AD50D6A_G = _SampleTexture2D_3AD50D6A_RGBA.g;
 								float _SampleTexture2D_3AD50D6A_B = _SampleTexture2D_3AD50D6A_RGBA.b;
 								float _SampleTexture2D_3AD50D6A_A = _SampleTexture2D_3AD50D6A_RGBA.a;
-								float _Property_25B71B3A_Out = Vector1_C66C8C5F;
 								float4 _Step_5342BEEB_Out;
-								Unity_Step_float4(_SampleTexture2D_3AD50D6A_RGBA, (_Property_25B71B3A_Out.xxxx), _Step_5342BEEB_Out);
+								Unity_Step_float4(_SampleTexture2D_3AD50D6A_RGBA, (Vector1_DEFF42F5.xxxx), _Step_5342BEEB_Out);
 								float4 _SampleTexture2D_12DDFADF_RGBA = SAMPLE_TEXTURE2D(Texture_14DCDDF9, samplerTexture_14DCDDF9, IN.uv0.xy);
 								float _SampleTexture2D_12DDFADF_R = _SampleTexture2D_12DDFADF_RGBA.r;
 								float _SampleTexture2D_12DDFADF_G = _SampleTexture2D_12DDFADF_RGBA.g;
 								float _SampleTexture2D_12DDFADF_B = _SampleTexture2D_12DDFADF_RGBA.b;
 								float _SampleTexture2D_12DDFADF_A = _SampleTexture2D_12DDFADF_RGBA.a;
 								float4 _Step_EFA13478_Out;
-								Unity_Step_float4(_SampleTexture2D_12DDFADF_RGBA, (_Property_25B71B3A_Out.xxxx), _Step_EFA13478_Out);
+								Unity_Step_float4(_SampleTexture2D_12DDFADF_RGBA, (Vector1_DEFF42F5.xxxx), _Step_EFA13478_Out);
 								float4 _Add_60C91261_Out;
 								Unity_Add_float4(_Step_5342BEEB_Out, _Step_EFA13478_Out, _Add_60C91261_Out);
 								surface.Color = (_Property_C4D3517C_Out.xyz);
